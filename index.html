@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Shuai write up project : for class requirement" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Shuai write up project</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project">View on GitHub</a>
+
+          <h1 id="project_title">Shuai write up project</h1>
+          <h2 id="project_tagline">for class requirement</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <ul>
+<li>title: "Project_writup"</li>
+<li>author: "Shuai Wang"</li>
+<li>date: "July 20, 2014"</li>
+</ul><p>Dear peers and graders,
+Thanks for grading this write_up project! I will describe what I have been doing follwed by the project instruction as well as important procedures learned from class materials. Any of your advice and feedback are valueable for our better understanding of the class lectures.</p>
+
+<h2>
+<a name="1-the-goal-of-this-project" class="anchor" href="#1-the-goal-of-this-project"><span class="octicon octicon-link"></span></a>1 The goal of this project</h2>
+
+<p>As desribed in the descrption, the goal of this piece of data is to "predict in which they did the exercise". ". More specially, the "classe" variable that contains "ABCDE" five categories are dependent variable. </p>
+
+<p>As we learned from week 1, the first thing I did is to look at what the training data looks like. The nature of the data several volunteers's data on many variables. The snapshot of some variables(you know it is very long!) is shown below:
+(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/summary%20of%20data.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/summary%20of%20data.png</a>)</p>
+
+<h3>
+<a name="11-in-and-out-of-sample-errors" class="anchor" href="#11-in-and-out-of-sample-errors"><span class="octicon octicon-link"></span></a>1.1 In and out of sample errors</h3>
+
+<p>So by observations, I notice that there are <em>six</em> people's data. Since the goal of to predict in which <em>they</em> did the excercise, so it is important to conside this factor <em>before</em> we train our model. To reduce in-sample errors, we can subset the raw dataset into six dataset with certain names. In other words, we <em>taliored</em> the raw data for target people. Actually it greatly reduced out of sample errors in variability of person. Other out of sample errors such as the test case is much smaller so we need to control the virance in order to make the predict model work. Key code is shown below for one example user:</p>
+
+<pre><code>*select_subset&lt;- function(DF,DF_test,sub_name)*
+</code></pre>
+
+<p><em>(DF is traing data frame with sub_name, DF_test is test data frame with sub_name, the predict model will be tailored based on the person)</em></p>
+
+<p>details will be given in cleaning procedure since it has to be done in both training and test data set in the same way.</p>
+
+<h3>
+<a name="12-data-cleaning" class="anchor" href="#12-data-cleaning"><span class="octicon octicon-link"></span></a>1.2 Data cleaning</h3>
+
+<p>another observation from raw data is there are many variables have missing value or nonsense value.</p>
+
+<pre><code>*nzv &lt;- nearZeroVar(training_sub); find variables that have near zero variance*
+
+*New_sub &lt;- training_sub[,-nzv]; delete them in training set*
+
+*New_testSub &lt;-test_sub[,-nzv]; delete same columns in test set*
+</code></pre>
+
+<p>After cleaning, the data summary of one subject was shown below (so many are deleted!):
+(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/gh-pages/Figure/capture.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/gh-pages/Figure/capture.png</a>) </p>
+
+<h2>
+<a name="2-building-models" class="anchor" href="#2-building-models"><span class="octicon octicon-link"></span></a>2 Building models</h2>
+
+<h3>
+<a name="21-cross-validation-metric-and-model-selection" class="anchor" href="#21-cross-validation-metric-and-model-selection"><span class="octicon octicon-link"></span></a>2.1 cross validation, metric, and model selection</h3>
+
+<p>Then the data is sliced by creataDataPartitation in two parts:training and testing for cross validation. Default cross validation such as resampling 25times were also used in train() function.</p>
+
+<h3>
+<a name="211-machine-learning-algrothim-glm" class="anchor" href="#211-machine-learning-algrothim-glm"><span class="octicon octicon-link"></span></a>2.1.1 Machine Learning Algrothim: GLM</h3>
+
+<p>Actually the first model I try is general linear model since it was learned in week 1(...). The basic idea is simple: after center and scale all remaining variables, fit train(...,method="glm"), when classes is considered as numeric variable.Since the classe is still integer number, So fitted results are rounded to nearest integer by round(). RMSE is used as metric.The result for "adelmo" is shown below(using subject "adelmo"" as an example):
+(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/RMSE.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/RMSE.png</a>)</p>
+
+<h3>
+<a name="212-machine-learning-algrothimrpart-decision-tree" class="anchor" href="#212-machine-learning-algrothimrpart-decision-tree"><span class="octicon octicon-link"></span></a>2.1.2 Machine Learning Algrothim:Rpart decision tree</h3>
+
+<p>The "perfect" 0 value for RMSE indicate there might be overfitting and something weird. When I apply it to real test, I got large nonsense numbers(-588333 etc) for test data's classe. So it seems that non-linear models are better options. Since the outcome is factor variable, a random forest decision tree was built to predict performance:
+    <em>modelFit &lt;-train(Subject_train$classe ~.,method="rpart",data=trainPC)</em></p>
+
+<p>Results for one person is shown below:
+(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/jeremy.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/jeremy.png</a>)</p>
+
+<p>So I realize there are some factors disturb the whole tree such as "X","row_names". After I remove those variables, The rpart tree outputs very reasonable results. My first attempt for the project got 85% correct:
+(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/total%20score.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/total%20score.png</a>)
+    key code: <em>New_sub &lt;- New_sub[,!(colnames(New_sub) %in% c("cvtd_timestamp","X","row.names"))]</em> remove unwanted columns</p>
+
+<h3>
+<a name="213-machine-learning-algrothim-random-forest" class="anchor" href="#213-machine-learning-algrothim-random-forest"><span class="octicon octicon-link"></span></a>2.1.3 Machine learning Algrothim: Random Forest</h3>
+
+<p>Since we already know decision tree(rpart) can provide 85% correct. So it is easier for us to try other non-linear algrothim on the test data that got wrong(Jeremy's model). The train function for random forest is shown below:</p>
+
+<pre><code>*modelFit &lt;-train(Subject_train$classe ~.,number=3,method="rf",trControl=trainControl("cv"),data=trainPC)*
+</code></pre>
+
+<p>(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/randomforest.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/randomforest.png</a>)</p>
+
+<p>This time I got the rest 3 correct.</p>
+
+<pre><code>%total score: 20/20
+</code></pre>
+
+<p>Thanks for reading it!</p>
+
+<p>Best,</p>
+
+<p>Shuai</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Shuai write up project maintained by <a href="https://github.com/ShuaiGitHub">ShuaiGitHub</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
