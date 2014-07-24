@@ -34,7 +34,7 @@
         <ul>
 <li>title: "Project_writup"</li>
 <li>author: "Shuai Wang"</li>
-<li>date: "July 20, 2014"</li>
+<li>date: "July 23, 2014"</li>
 </ul><p>Dear peers and graders,
 Thanks for grading this write_up project! I will describe what I have been doing follwed by the project instruction as well as important procedures learned from class materials. Any of your advice and feedback are valueable for our better understanding of the class lectures.</p>
 
@@ -96,9 +96,12 @@ Thanks for grading this write_up project! I will describe what I have been doing
 <p>Results for one person is shown below:
 (<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/jeremy.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/jeremy.png</a>)</p>
 
-<p>So I realize there are some factors disturb the whole tree such as "X","row_names". After I remove those variables, The rpart tree outputs very reasonable results. My first attempt for the project got 85% correct:
-(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/total%20score.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/total%20score.png</a>)
-    key code: <em>New_sub &lt;- New_sub[,!(colnames(New_sub) %in% c("cvtd_timestamp","X","row.names"))]</em> remove unwanted columns</p>
+<p>So I realize there are some factors disturb the whole tree such as "X","row_names". After I remove those variables, The rpart tree outputs very reasonable results. My first attempt for the project got 85% correct:</p>
+
+<pre><code>*total score 17/20*
+
+key code: *New_sub &lt;- New_sub[,!(colnames(New_sub) %in% c("cvtd_timestamp","X","row.names"))]* remove unwanted columns
+</code></pre>
 
 <h3>
 <a name="213-machine-learning-algrothim-random-forest" class="anchor" href="#213-machine-learning-algrothim-random-forest"><span class="octicon octicon-link"></span></a>2.1.3 Machine learning Algrothim: Random Forest</h3>
@@ -112,7 +115,7 @@ Thanks for grading this write_up project! I will describe what I have been doing
 
 <p>This time I got the rest 3 correct.</p>
 
-<pre><code>%total score: 20/20
+<pre><code>*total score: 20/20*
 </code></pre>
 
 <p>Thanks for reading it!</p>
