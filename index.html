@@ -1,43 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Shuai write up project : for class requirement" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Shuai write up project by ShuaiGitHub</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Shuai write up project</title>
   </head>
-
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project">View on GitHub</a>
+      <header>
+        <h1>Shuai write up project</h1>
+        <p>for class requirement</p>
+      </header>
 
-          <h1 id="project_title">Shuai write up project</h1>
-          <h2 id="project_tagline">for class requirement</h2>
+      <div id="banner">
+        <span id="logo"></span>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        <a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <hr><p>title: "Project_writup"
-author: "Shuai Wang"</p>
-
-<h2>
-<a name="date-july-20-2014" class="anchor" href="#date-july-20-2014"><span class="octicon octicon-link"></span></a>date: "July 20, 2014"</h2>
-
-<p>Dear peers and graders,
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <ul>
+<li>title: "Project_writup"</li>
+<li>author: "Shuai Wang"</li>
+<li>date: "July 20, 2014"</li>
+</ul><p>Dear peers and graders,
 Thanks for grading this write_up project! I will describe what I have been doing follwed by the project instruction as well as important procedures learned from class materials. Any of your advice and feedback are valueable for our better understanding of the class lectures.</p>
 
 <h2>
@@ -87,7 +93,7 @@ Thanks for grading this write_up project! I will describe what I have been doing
 <a name="211-machine-learning-algrothim-glm" class="anchor" href="#211-machine-learning-algrothim-glm"><span class="octicon octicon-link"></span></a>2.1.1 Machine Learning Algrothim: GLM</h3>
 
 <p>Actually the first model I try is general linear model since it was learned in week 1(...). The basic idea is simple: after center and scale all remaining variables, fit train(...,method="glm"), when classes is considered as numeric variable.Since the classe is still integer number, So fitted results are rounded to nearest integer by round(). RMSE is used as metric.The result for "adelmo" is shown below(using subject "adelmo"" as an example):
-<img src="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/RMSE.png" alt="RMSE of one subject"></p>
+(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/RMSE.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/RMSE.png</a>)</p>
 
 <h3>
 <a name="212-machine-learning-algrothimrpart-decision-tree" class="anchor" href="#212-machine-learning-algrothimrpart-decision-tree"><span class="octicon octicon-link"></span></a>2.1.2 Machine Learning Algrothim:Rpart decision tree</h3>
@@ -123,17 +129,12 @@ Thanks for grading this write_up project! I will describe what I have been doing
 
 <p>Shuai</p>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Shuai write up project maintained by <a href="https://github.com/ShuaiGitHub">ShuaiGitHub</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/ShuaiGitHub">ShuaiGitHub</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-
   </body>
 </html>
