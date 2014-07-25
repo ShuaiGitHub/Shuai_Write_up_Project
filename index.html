@@ -118,7 +118,7 @@ key code: *New_sub &lt;- New_sub[,!(colnames(New_sub) %in% c("cvtd_timestamp","X
 <pre><code>*modelFit &lt;-train(Subject_train$classe ~.,number=3,method="rf",trControl=trainControl("cv"),data=trainPC)*
 </code></pre>
 
-<p>The random forest model is printed on the right. The classe column show the predict value:</p>
+<p>The random forest model is printed on the right(with confusion Matrix). The classe column show the predict value:</p>
 
 <p>(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/gh-pages/Figure/randomforest.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/gh-pages/Figure/randomforest.png</a>)</p>
 
