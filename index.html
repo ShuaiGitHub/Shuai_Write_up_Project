@@ -93,11 +93,14 @@ Thanks for grading this write_up project! I will describe what I have been doing
 <h3>
 <a name="212-machine-learning-algrothimrpart-decision-tree" class="anchor" href="#212-machine-learning-algrothimrpart-decision-tree"><span class="octicon octicon-link"></span></a>2.1.2 Machine Learning Algrothim:Rpart decision tree</h3>
 
-<p>The "perfect" 0 value for RMSE indicate there might be overfitting and something weird. When I apply it to real test, I got large nonsense numbers(-588333 etc) for test data's classe. So it seems that non-linear models are better options. Since the outcome is factor variable, a decision tree was built to predict performance:
-    <em>modelFit &lt;-train(Subject_train$classe ~.,method="rpart",data=trainPC)</em></p>
+<p>The "perfect" 0 value for RMSE indicate there might be overfitting and something weird. When I apply it to real test, I got large nonsense numbers(-588333 etc) for test data's classe. So it seems that non-linear models are better options. Since the outcome is factor variable, a decision tree was built to predict performance:</p>
 
-<p>Results for one person is shown below:
-(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/jeremy.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/jeremy.png</a>)</p>
+<pre><code>*modelFit &lt;-train(Subject_train$classe ~.,method="rpart",data=trainPC)*
+</code></pre>
+
+<p>Results for one person is shown below(the right panel shows the decision):</p>
+
+<p>(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/jeremy.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/jeremy.png</a>)</p>
 
 <p>So I realize there are some factors disturb the whole tree such as "X","row_names". After I remove those variables, The rpart tree outputs very reasonable results. My first attempt for the project got 85% correct:</p>
 
@@ -114,6 +117,8 @@ key code: *New_sub &lt;- New_sub[,!(colnames(New_sub) %in% c("cvtd_timestamp","X
 
 <pre><code>*modelFit &lt;-train(Subject_train$classe ~.,number=3,method="rf",trControl=trainControl("cv"),data=trainPC)*
 </code></pre>
+
+<p>The random forest model is printed on the right. The classe column show the predict value:</p>
 
 <p>(<a href="https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/randomforest.png">https://github.com/ShuaiGitHub/Shuai_Write_up_Project/blob/master/Figure/randomforest.png</a>)</p>
 
