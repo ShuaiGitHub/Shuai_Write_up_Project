@@ -49,7 +49,7 @@ Thanks for grading this write_up project! I will describe what I have been doing
 <h3>
 <a name="11-in-and-out-of-sample-errors" class="anchor" href="#11-in-and-out-of-sample-errors"><span class="octicon octicon-link"></span></a>1.1 In and out of sample errors</h3>
 
-<p>So by observations, I notice that there are <em>six</em> people's data. Since the goal of to predict in which <em>they</em> did the excercise, so it is important to conside this factor <em>before</em> we train our model. To reduce in-sample errors, we can subset the raw dataset into six dataset with certain names. In other words, we <em>taliored</em> the raw data for target people. Actually it greatly reduced out of sample errors in variability of person. Other out of sample errors such as the test case is much smaller so we need to control the virance in order to make the predict model work. Key code is shown below for one example user:</p>
+<p>So by observations, I notice that there are <em>six</em> people's data. Since the goal of to predict in which <em>they</em> did the excercise, so it is important to consider this factor <em>before</em> we train our model. To reduce in-sample errors, we can subset the raw dataset into six dataset with certain names. In other words, we <em>taliored</em> the raw data for target people. Actually it greatly reduced out of sample errors in variability of person. Other out of sample errors such as the test case is much smaller so we need to control the virance in order to make the predict model work. Key code is shown below for one example user:</p>
 
 <pre><code>*select_subset&lt;- function(DF,DF_test,sub_name)*
 </code></pre>
@@ -136,7 +136,7 @@ key code: *New_sub &lt;- New_sub[,!(colnames(New_sub) %in% c("cvtd_timestamp","X
 <h4>
 <a name="resources-and-references" class="anchor" href="#resources-and-references"><span class="octicon octicon-link"></span></a>Resources and References:</h4>
 
-<p>[course materials]: slides and examples from class slides</p>
+<p>[course materials]: slides and examples from class.</p>
 
 <p>(<a href="http://support.mashery.com/docs/customizing_your_portal/Markdown_Cheat_Sheet">http://support.mashery.com/docs/customizing_your_portal/Markdown_Cheat_Sheet</a>)</p>
 
